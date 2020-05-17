@@ -4,7 +4,8 @@ const csv1 = require('csv-parser'),
   bodyParser = require("body-parser"),
   multer = require('multer'),
   csv = require('fast-csv'),
-  app = express();
+  app = express(),
+  PORT = process.env.PORT || 5000;
 
 const data = []
 
@@ -80,6 +81,6 @@ app.get("/feed/", function (req, res, next) {
 });
 
 
-app.listen(3000);
+app.listen(PORT);
 
-console.log(`Listen 3000`)
+console.log(`Listen ${PORT}`)
