@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<yml_catalog date="<%= date %>">
+  <shop>
+    <currencies>
+      <currency id="UAH" rate="1" />
+    </currencies>
+    <offers>
+      <% for( let index = 0; index < data.length; index++ ) { %>
+      
+      <offer id="<%= data[index].offerid %>" available="true">
+        <name><%= data[index].name %></name>
+        <model><%= data[index].model %></model>
+        <warranty><%= data[index].warranty %></warranty>
+        <currencyId><%= data[index].currencyId %></currencyId>
+        <categoryId><%= data[index].categoryId %></categoryId>
+        <price><%= data[index].price %></price>
+        <picture main="true">
+          <%= data[index].picture1 %>
+        </picture>
+        <picture main="false">
+          <%= data[index].picture2 %>
+        </picture>
+        <picture main="false">
+          <%= data[index].picture3 %>
+        </picture>
+        <picture main="false">
+          <%= data[index].picture4 %>
+        </picture>
+        <description>
+          <![CDATA[<%- data[index].description %>]]>
+        </description>
+      </offer>
+      <% } %>
+    </offers>
+  </shop>
+</yml_catalog>

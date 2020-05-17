@@ -1,0 +1,21 @@
+{
+  "name": "parse-table",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "csv-parser": "^2.3.2",
+    "ejs": "^3.0.2",
+    "express": "^4.17.1",
+    "fast-csv": "^4.1.3",
+    "multer": "^1.4.2",
+    "nodemon": "^2.0.3"
+  }
+}
