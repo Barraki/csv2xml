@@ -64,6 +64,7 @@ app.post("/", function (req, res) {
     .pipe(csv1())
     .on('data', (row) => {
       data.push(row);
+      console.log(data)
     })
     .on('end', (row) => {
       console.log('CSV file successfully processed');
