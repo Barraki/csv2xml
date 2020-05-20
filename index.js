@@ -68,8 +68,8 @@ app.post("/", function (req, res) {
     })
     .on('end', (row) => {
       console.log('CSV file successfully processed');
+      res.redirect('/feed/');
     });
-    res.redirect('/feed/');
 })
 
 
