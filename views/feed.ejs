@@ -7,7 +7,7 @@
     <offers>
       <% for( let index = 0; index < data.length; index++ ) { %>
       
-      <offer id="<%= data[index].offerid %>" available="true">
+      <offer id="<%= data[index].offerId %>" available="<%= data[index].available %>">
         <name><%= data[index].name %></name>
         <model><%= data[index].model %></model>
         <warranty><%= data[index].warranty %></warranty>
