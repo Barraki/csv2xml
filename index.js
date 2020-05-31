@@ -19,7 +19,11 @@ const Storage = multer.diskStorage({
   },
   filename: function (req, file, callback) {
     if (fs.existsSync('./data/data.csv')) {
-      fs.unlink('./data/data.csv')
+      fs.unlink('./data/data.csv', function (err) {	      fs.unlink('./data/data.csv')
+      if (err) throw err;	
+      // if no error, file has been deleted successfully	
+      console.log('File deleted!');	
+    });
     }
     callback(null, 'data.csv');
   }
