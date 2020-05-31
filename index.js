@@ -19,11 +19,7 @@ const Storage = multer.diskStorage({
   },
   filename: function (req, file, callback) {
     if (fs.existsSync('./data/data.csv')) {
-      fs.unlink('./data/data.csv', function (err) {
-        if (err) throw err;
-        // if no error, file has been deleted successfully
-        console.log('File deleted!');
-      });
+      fs.unlink('./data/data.csv')
     }
     callback(null, 'data.csv');
   }
@@ -67,12 +63,12 @@ app.post("/", function (req, res) {
     })
     .on('end', (row) => {
       console.log('CSV file successfully processed');
-      res.redirect('/feed/');
+      res.redirect('/data.xml');
     });
 })
 
 
-app.get("/feed/", function (req, res, next) {
+app.get("/data.xml", function (req, res, next) {
   res.type('text/xml', "utf-8");
   res.render("feed", {
     data: data,
