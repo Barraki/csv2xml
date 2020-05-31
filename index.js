@@ -63,12 +63,12 @@ app.post("/", function (req, res) {
     })
     .on('end', (row) => {
       console.log('CSV file successfully processed');
-      res.redirect('/data.xml/');
+      res.redirect('/data.xml');
     });
 })
 
 
-app.get("/data.xml/", function (req, res, next) {
+app.get("/data.xml", function (req, res, next) {
   res.type('text/xml', "utf-8");
   res.render("feed", {
     data: data,
