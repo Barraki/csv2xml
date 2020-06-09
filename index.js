@@ -19,12 +19,12 @@ const Storage = multer.diskStorage({
   },
   filename: function (req, file, callback) {
     if (fs.existsSync('./data/data.csv')) {
-      fs.unlink('./data/data.csv', function (err) {	      
+      fs.unlink('./data/data.csv', function (err) {
 
-      if (err) throw err;	
-      // if no error, file has been deleted successfully	
-      console.log('File deleted!');	
-    });
+        if (err) throw err;
+        // if no error, file has been deleted successfully
+        console.log('File deleted!');
+      });
     }
     callback(null, 'data.csv');
   }
@@ -42,7 +42,7 @@ const getDate = () => {
   const month = date.getMonth();
   const day = date.getDay();
   const time = date.getHours() + ':' + date.getMinutes();
-  
+
   return `${year}-${month}-${day} ${time}`
 }
 
@@ -50,26 +50,30 @@ app.get("/", function (req, res, next) {
   res.render("index");
 });
 
+
 app.post("/", function (req, res) {
   upload(req, res, function (err) {
     if (err) {
       return res.end("Something went wrong!");
     }
-  });
-  console.log('Rewrite')
-  
-  data.length=0;
+  })
 
-  fs.createReadStream('./data/data.csv')
-    .pipe(csv1())
-    .on('data', (row) => {
-      data.push(row);
-      console.log(data)
-    })
-    .on('end', (row) => {
-      console.log('CSV file successfully processed');
-      res.redirect('/data.xml/');
-    });
+  data.length = 0;
+  try {
+    fs.createReadStream('./data/data.csv')
+      .pipe(csv1())
+      .on('data', (row) => {
+        data.push(row);
+      })
+      .on('error', (error) => `Err: ${error}`)
+      .on('end', (row) => {
+        console.log('CSV file successfully processed');
+        res.redirect('/data.xml/');
+      });
+  } catch (e) {
+    console.log(e)
+    return next(error)
+  }
 })
 
 
