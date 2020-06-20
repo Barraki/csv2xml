@@ -1,8 +1,12 @@
 # csv2xml
 Converter csv to ml
 
-## Run production mode: npm start 
+## Run Application
 
-## Run dev mode: npm run dev
+production mode: 
+npm start
 
-Hard port: 3000
+dev mode: 
+npm run dev
+
+Default port: 3000
