@@ -1,10 +1,10 @@
 const csv1 = require('csv-parser'),
-  fs = require('fs'),
-  express = require("express"),
-  bodyParser = require("body-parser"),
-  multer = require('multer'),
-  app = express(),
-  PORT = process.env.PORT || 5000;
+      fs = require('fs'),
+      express = require("express"),
+      bodyParser = require("body-parser"),
+      multer = require('multer'),
+      app = express(),
+      PORT = process.env.PORT || 5000;
 
 const data = []
 
@@ -64,6 +64,7 @@ app.post("/", function (req, res) {
       .pipe(csv1())
       .on('data', (row) => {
         data.push(row);
+        console.log(data)
       })
       .on('error', (error) => `Err: ${error}`)
       .on('end', (row) => {
